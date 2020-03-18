@@ -19,17 +19,16 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Document implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     private String libelle;
     private String code;
-    private int ordre;
-    private int nombre;
-    
+    private Integer ordre;
+    private Integer nombre;
+
     @ManyToOne
-    private Service service;
+    private ServicePropose servicePropose;
 
     public String getLibelle() {
         return libelle;
@@ -47,31 +46,30 @@ public class Document implements Serializable {
         this.code = code;
     }
 
-    public int getOrdre() {
+    public Integer getOrdre() {
         return ordre;
     }
 
-    public void setOrdre(int ordre) {
+    public void setOrdre(Integer ordre) {
         this.ordre = ordre;
     }
 
-    public int getNombre() {
+    public Integer getNombre() {
         return nombre;
     }
 
-    public void setNombre(int nombre) {
+    public void setNombre(Integer nombre) {
         this.nombre = nombre;
     }
 
-    public Service getService() {
-        return service;
+  
+    public ServicePropose getServicePropose() {
+        return servicePropose;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setServicePropose(ServicePropose servicePropose) {
+        this.servicePropose = servicePropose;
     }
-    
-    
 
     public Long getId() {
         return id;
@@ -105,5 +103,5 @@ public class Document implements Serializable {
     public String toString() {
         return "com.zsmart.declaration.bean.Document[ id=" + id + " ]";
     }
-    
+
 }

@@ -25,7 +25,6 @@ import javax.persistence.Temporal;
 @Entity
 public class Demande implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
@@ -60,14 +59,14 @@ public class Demande implements Serializable {
     private List<DocumentDemande> documentDemandes;
 
     @ManyToOne
-    private Service service;
+    private ServicePropose servicePropose;
 
-    public Service getService() {
-        return service;
+    public ServicePropose getServicePropose() {
+        return servicePropose;
     }
 
-    public void setService(Service service) {
-        this.service = service;
+    public void setServicePropose(ServicePropose servicePropose) {
+        this.servicePropose = servicePropose;
     }
 
     public String getRefrenceSociete() {

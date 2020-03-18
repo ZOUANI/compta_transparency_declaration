@@ -19,14 +19,13 @@ import javax.persistence.ManyToOne;
 @Entity
 public class DocumentDemande implements Serializable {
 
-    private static final long serialVersionUID = 1L;
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
     @ManyToOne
     private Document document;
-    private int nombreDocumentFournis;
-    private int nombreDocumentRestant;
+    private Integer nombreDocumentFournis;
+    private Integer nombreDocumentRestant;
     @ManyToOne
     private Demande demande;
 
@@ -38,22 +37,23 @@ public class DocumentDemande implements Serializable {
         this.document = document;
     }
 
-    public int getNombreDocumentFournis() {
+    public Integer getNombreDocumentFournis() {
         return nombreDocumentFournis;
     }
 
-    public void setNombreDocumentFournis(int nombreDocumentFournis) {
+    public void setNombreDocumentFournis(Integer nombreDocumentFournis) {
         this.nombreDocumentFournis = nombreDocumentFournis;
     }
 
-    public int getNombreDocumentRestant() {
+    public Integer getNombreDocumentRestant() {
         return nombreDocumentRestant;
     }
 
-    public void setNombreDocumentRestant(int nombreDocumentRestant) {
+    public void setNombreDocumentRestant(Integer nombreDocumentRestant) {
         this.nombreDocumentRestant = nombreDocumentRestant;
     }
 
+   
     public Demande getDemande() {
         return demande;
     }
