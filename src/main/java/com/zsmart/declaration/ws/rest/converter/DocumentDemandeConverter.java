@@ -1,88 +1,89 @@
 package com.zsmart.declaration.ws.rest.converter;
- 
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import com.zsmart.declaration.service.util.*;
-import com.zsmart.declaration.bean.DocumentDemande; 
-import com.zsmart.declaration.ws.rest.vo.DocumentDemandeVo; 
+import com.zsmart.declaration.bean.DocumentDemande;
+import com.zsmart.declaration.ws.rest.vo.DocumentDemandeVo;
 
- @Component 
-public class DocumentDemandeConverter extends AbstractConverter<DocumentDemande,DocumentDemandeVo>{ 
+@Component
+public class DocumentDemandeConverter extends AbstractConverter<DocumentDemande, DocumentDemandeVo> {
 
-private boolean document; 
+    private boolean document;
 
- @Autowired
- private DocumentConverter documentConverter ; 
-private boolean demande; 
+    @Autowired
+    private DocumentConverter documentConverter;
+    private boolean demande;
 
- @Autowired
- private DemandeConverter demandeConverter ; 
+    @Autowired
+    private DemandeConverter demandeConverter;
 
- @Override 
- public DocumentDemande toItem(DocumentDemandeVo vo) {
- if (vo == null) {
-    return null;
-      } else {
-DocumentDemande item = new DocumentDemande();
+    @Override
+    public DocumentDemande toItem(DocumentDemandeVo vo) {
+        if (vo == null) {
+            return null;
+        } else {
+            DocumentDemande item = new DocumentDemande();
 
- if(document&& vo.getDocumentVo() != null) {
- item.setDocument(documentConverter.toItem(vo.getDocumentVo()));
-} 
- 
- if(demande&& vo.getDemandeVo() != null) {
- item.setDemande(demandeConverter.toItem(vo.getDemandeVo()));
-} 
- 
- if (vo.getId() != null) {
- item.setId(NumberUtil.toLong(vo.getId()));
-} 
+            if (document && vo.getDocumentVo() != null) {
+                item.setDocument(documentConverter.toItem(vo.getDocumentVo()));
+            }
 
- if (vo.getNombreDocumentFournis() != null) {
- item.setNombreDocumentFournis((vo.getNombreDocumentFournis()));
-} 
+            if (demande && vo.getDemandeVo() != null) {
+                item.setDemande(demandeConverter.toItem(vo.getDemandeVo()));
+            }
 
- if (vo.getNombreDocumentRestant() != null) {
- item.setNombreDocumentRestant((vo.getNombreDocumentRestant()));
-} 
+            if (vo.getId() != null) {
+                item.setId(NumberUtil.toLong(vo.getId()));
+            }
 
-return item;
- }
- }
+            if (vo.getNombreDocumentFournis() != null) {
+                item.setNombreDocumentFournis(NumberUtil.toInt(vo.getNombreDocumentFournis()));
+            }
 
-  @Override 
- public DocumentDemandeVo toVo(DocumentDemande item) {
- if (item == null) {
-    return null;
-      } else {
-DocumentDemandeVo vo = new DocumentDemandeVo();
+            if (vo.getNombreDocumentRestant() != null) {
+                item.setNombreDocumentRestant(NumberUtil.toInt(vo.getNombreDocumentRestant()));
+            }
 
- if(document&& item.getDocument() != null) {
- vo.setDocumentVo(documentConverter.toVo(item.getDocument()));
-} 
- 
- if(demande&& item.getDemande() != null) {
- vo.setDemandeVo(demandeConverter.toVo(item.getDemande()));
-} 
- 
- if (item.getId() != null) {
- vo.setId(NumberUtil.toString(item.getId()));
-} 
+            return item;
+        }
+    }
 
- if (item.getNombreDocumentFournis() != null) {
- vo.setNombreDocumentFournis(NumberUtil.toString(item.getNombreDocumentFournis()));
-} 
+    @Override
+    public DocumentDemandeVo toVo(DocumentDemande item) {
+        if (item == null) {
+            return null;
+        } else {
+            DocumentDemandeVo vo = new DocumentDemandeVo();
 
- if (item.getNombreDocumentRestant() != null) {
- vo.setNombreDocumentRestant(NumberUtil.toString(item.getNombreDocumentRestant()));
-} 
+            if (document && item.getDocument() != null) {
+                vo.setDocumentVo(documentConverter.toVo(item.getDocument()));
+            }
 
-return vo;
- }
- }
-public void init() { 
+            if (demande && item.getDemande() != null) {
+                vo.setDemandeVo(demandeConverter.toVo(item.getDemande()));
+            }
 
-document = true; 
+            if (item.getId() != null) {
+                vo.setId(NumberUtil.toString(item.getId()));
+            }
 
-demande = true; 
+            if (item.getNombreDocumentFournis() != null) {
+                vo.setNombreDocumentFournis(NumberUtil.toString(item.getNombreDocumentFournis()));
+            }
+
+            if (item.getNombreDocumentRestant() != null) {
+                vo.setNombreDocumentRestant(NumberUtil.toString(item.getNombreDocumentRestant()));
+            }
+
+            return vo;
+        }
+    }
+
+    public void init() {
+
+        document = true;
+
+        demande = true;
+    }
 }
- } 
